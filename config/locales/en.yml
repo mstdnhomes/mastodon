@@ -1610,8 +1610,30 @@ en:
     title: "%{instance} Terms of Service and Privacy Policy"
   themes:
     contrast: Mastodon (High contrast)
+    cyberpunk-neon: Cyberpunk Neon
+    cybrespace: Cybrespace
+    deep-green: Deep Green
     default: Mastodon (Dark)
+    forest: Forest
+    geodude: Spring Earth
+    linernotes_dark: Liner Notes Dark
+    luxury: Luxury Purple
     mastodon-light: Mastodon (Light)
+    meemu-org: Vaporwave
+    neoncity: Neon City
+    new-year: Chinese New Year
+    nga: Light Yellow
+    pastel-gradient: Pastel Gradient
+    purple-haze: Purple Haze
+    royal-tenenbaums: Royal Tenenbaums
+    sakura: Sakura
+    sleeping-town: Sleeping Town
+    strawberry: Strawberry
+    swan-lake: Swan Lake
+    ubuntu-light: Light Hazel
+    ubuntu-terminal: Dark Purple
+    win95: Windows 95
+    witches-town: Witches Town
   time:
     formats:
       default: "%b %d, %Y, %H:%M"
