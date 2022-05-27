@@ -1582,8 +1582,30 @@ zh-CN:
     title: "%{instance} 使用条款和隐私权政策"
   themes:
     contrast: Mastodon（高对比度）
+    cyberpunk-neon: 赛博霓虹
+    cybrespace: 赛博浅粉
+    deep-green: 墨绿
     default: Mastodon（暗色主题）
+    forest: 深林
+    geodude: 初春土地
+    linernotes_dark: 画线笔黑
+    luxury: 奢华紫
     mastodon-light: Mastodon（亮色主题）
+    meemu-org: 海边暮色
+    neoncity: 霓虹都市
+    new-year: 新年大吉
+    nga: 四月鹅黄
+    pastel-gradient: 春日渐变
+    purple-haze: 紫色薄雾
+    royal-tenenbaums: 天才一族
+    sakura: 樱花🌸粉
+    sleeping-town: 沉睡小镇
+    strawberry: 星露谷物语
+    swan-lake: 天鹅湖
+    ubuntu-light: 浅褐
+    ubuntu-terminal: 深紫
+    win95: Windows 95
+    witches-town: 巫师小镇
   time:
     formats:
       default: "%Y年%m月%d日 %H:%M"
