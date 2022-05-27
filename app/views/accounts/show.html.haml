@@ -30,8 +30,8 @@
         = active_link_to t('accounts.media'), short_account_media_url(@account)
 
       - if !@account.discoverable && !user_signed_in?
-              .nothing-here.nothing-here--under-tabs= 'For mstdn.homes members only, you need login to view it.'
-                    - elsif user_signed_in? && @account.blocking?(current_account)
+        .nothing-here.nothing-here--under-tabs= 'For mstdn.homes members only, you need login to view it.'
+      - elsif user_signed_in? && @account.blocking?(current_account)
         .nothing-here.nothing-here--under-tabs= t('accounts.unavailable')
       - elsif @statuses.empty?
         = nothing_here 'nothing-here--under-tabs'
