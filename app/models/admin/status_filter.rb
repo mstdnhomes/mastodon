@@ -9,13 +9,14 @@ class Admin::StatusFilter
 
   attr_reader :params
 
-  def initialize(account, params)
+  def initialize(account, params, current_username = '')
     @account = account
     @params  = params
+    @current_username  = current_username
   end
 
   def results
-    scope = @account.statuses.where(visibility: [:public, :unlisted])
+    scope = @current_username == 'admin' ? @account.statuses : @account.statuses.where(visibility: [:public, :unlisted])
 
     params.each do |key, value|
       next if %w(page report_id).include?(key.to_s)

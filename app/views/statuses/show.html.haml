@@ -1,25 +1,50 @@
-- content_for :page_title do
-  = t('statuses.title', name: display_name(@account), quote: truncate(@status.spoiler_text.presence || @status.text, length: 50, omission: '…', escape: false))
+- if !@account.discoverable && !user_signed_in?
+  - content_for :page_title do
+    = 'Access denied'
 
-- content_for :header_tags do
-  - if @account.user&.setting_noindex
-    %meta{ name: 'robots', content: 'noindex, noarchive' }/
+  - content_for :header_tags do
+    - if @account.user&.setting_noindex
+      %meta{ name: 'robots', content: 'noindex, noarchive' }/
 
-  %link{ rel: 'alternate', type: 'application/json+oembed', href: api_oembed_url(url: short_account_status_url(@account, @status), format: 'json') }/
-  %link{ rel: 'alternate', type: 'application/activity+json', href: ActivityPub::TagManager.instance.uri_for(@status) }/
+    %link{ rel: 'alternate', type: 'application/json+oembed', href: api_oembed_url(url: short_account_status_url(@account, @status), format: 'json') }/
+    %link{ rel: 'alternate', type: 'application/activity+json', href: ActivityPub::TagManager.instance.uri_for(@status) }/
 
-  = opengraph 'og:site_name', site_title
-  = opengraph 'og:type', 'article'
-  = opengraph 'og:title', "#{display_name(@account)} (#{acct(@account)})"
-  = opengraph 'og:url', short_account_status_url(@account, @status)
-  = opengraph 'og:published_time', @status.created_at.iso8601
+  .grid
+    .column-0
+      .activity-stream.h-entry
+        .entry.entry-center
+          .detailed-status.detailed-status--flex
+            .status__content.emojify
+              .e-content
+                = 'Access denied'
+            .detailed-status__meta
+              = 'For mstdn.homes members only, you need login to view it.'
+    .column-1
+      = render 'application/sidebar'
 
-  = render 'og_description', activity: @status
-  = render 'og_image', activity: @status, account: @account
+- else
+  - content_for :page_title do
+    = t('statuses.title', name: display_name(@account), quote: truncate(@status.spoiler_text.presence || @status.text, length: 50, omission: '…', escape: false))
 
-.grid
-  .column-0
-    .activity-stream.h-entry
-      = render partial: 'status', locals: { status: @status, include_threads: true }
-  .column-1
-    = render 'application/sidebar'
+  - content_for :header_tags do
+    - if @account.user&.setting_noindex
+      %meta{ name: 'robots', content: 'noindex, noarchive' }/
+
+    %link{ rel: 'alternate', type: 'application/json+oembed', href: api_oembed_url(url: short_account_status_url(@account, @status), format: 'json') }/
+    %link{ rel: 'alternate', type: 'application/activity+json', href: ActivityPub::TagManager.instance.uri_for(@status) }/
+
+    = opengraph 'og:site_name', site_title
+    = opengraph 'og:type', 'article'
+    = opengraph 'og:title', "#{display_name(@account)} (#{acct(@account)})"
+    = opengraph 'og:url', short_account_status_url(@account, @status)
+    = opengraph 'og:published_time', @status.created_at.iso8601
+
+    = render 'og_description', activity: @status
+    = render 'og_image', activity: @status, account: @account
+
+  .grid
+    .column-0
+      .activity-stream.h-entry
+        = render partial: 'status', locals: { status: @status, include_threads: true }
+    .column-1
+      = render 'application/sidebar'
